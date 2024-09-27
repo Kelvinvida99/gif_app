@@ -1,13 +1,11 @@
 import PropTypes from "prop-types";
+import { getGifs } from "./helpers/getGifs";
+import { useEffect } from "react";
 
 export const GifGrid = ({ category }) => {
-  const getGifs = async () => {
-    const url = `http://api.giphy.com/v1/gifs/search?api_key=UnIX4nZwBgMjiGlJwK7h3InhTE2sur8H&q=${category}`;
-    const resp = await fetch(url);
-    console.log(resp)
-  };
-
-  getGifs()
+  useEffect(() => {
+    getGifs(category);
+  }, [category]);
 
   return (
     <>
